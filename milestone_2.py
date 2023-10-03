@@ -64,9 +64,8 @@ guess = input("Enter your guess here: \n")
 #Step 3:
 #Create an else block that prints "Oops! That is not a valid input." if the preceding conditions are not met.
 
-if len(guess == 1 and guess.isalpha == True ):
+if (len(guess) == 1 and guess.isalpha() == True ):
     print("Good guess!")
 else: 
     print("Oops! That is not a valid input.")
-
 
