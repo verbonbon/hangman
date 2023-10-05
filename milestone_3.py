@@ -59,9 +59,9 @@ def check_validity():
 
 answer = ["p","l", "a", "y"]
 
-def check_guess(user_input):
-    user_input = user_input.lower()
-    for letter in user_input:
+def check_guess(guess):
+    guess = guess.lower()
+    for letter in guess:
         if letter in answer:
             print("This letter is in the word")
         else:
