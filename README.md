@@ -11,7 +11,10 @@
 
 
 ##   Background of the project <a name="background"></a>
-what it does, the aim of the project, and what you learned 
+This is a one player game, written in Python. The game cane take in any word list, and it will randomly picks a word for player to guess. <\n> 
+Player can guess a single letter. The default is to start with 5 lives. Each wrong guess will take away 1 life. 
+
+This project demonstrates the use of class definition and control flow.  
 
 ##    How to install? <a name="install"></a>
 ##    Usage instructions <a name="usage"></a>
