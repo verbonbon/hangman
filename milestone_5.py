@@ -76,18 +76,17 @@ class Hangman:
         
         The game ends when there is no more live left.       
         """
-        
-        while True:
-            self.guess = input("Please enter a letter that you think is part of the word: \n" )
-            if (self.guess.isalpha() == False and len(self.guess) != 1):
-                print("Invalid letter. Please, enter a single alphabetical character")
-            elif self.guess in self.list_of_guesses:
-                print("You already tried that letter!")
-            else:
-                self.check_guess(self.guess)
-                self.list_of_guesses.append(self.guess)
-                print(f"These are the letters you have already guessed: \n{self.list_of_guesses}")
-                print(f" This is the number of unique letters left (num_letters) for guessing: {self.num_letters}")
+
+        self.guess = input("Please enter a letter that you think is part of the word: \n" )
+        if (self.guess.isalpha() == False and len(self.guess) != 1):
+            print("Invalid letter. Please, enter a single alphabetical character")
+        elif self.guess in self.list_of_guesses:
+            print("You already tried that letter!")
+        else:
+            self.check_guess(self.guess)
+            self.list_of_guesses.append(self.guess)
+            print(f"These are the letters you have already guessed: \n{self.list_of_guesses}")
+            print(f" This is the number of unique letters left (num_letters) for guessing: {self.num_letters}")
 
 
 ### an attempt to follow the practical instructions:
@@ -95,7 +94,7 @@ def play_game(word_list):
     num_lives = 5
     game = Hangman(word_list, num_lives)
     while True:
-        if (num_lives == 0):
+        if (game.num_lives == 0):
             print("You lost!")
             break
         elif game.num_letters > 0:
