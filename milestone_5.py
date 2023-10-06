@@ -6,7 +6,7 @@ Created on Wed Oct  4 16:13:54 2023
 """
 import random
 import re
-word_list1 = ["plaay", "truth", "gloow", "computter"]
+word_list1 = ["play", "truth", "glow", "computer", "book"]
 
 
 class Hangman:
@@ -23,7 +23,7 @@ class Hangman:
         The first one is the word list (word_list). 
         Administrators of the game can create a word list of any length, to be stored as a list.
         The second parameter is number of lives left (num_lives).
-        The default is set as 5. Adminstrators/users of the game can change it.        
+        The default is set to 5. Adminstrators/users of the game can change it.        
         
         A word will be randomly selected as the answer of the game.
         In the output, the game will display the alphabet(s) guessed (list_of_guesses), 
@@ -54,10 +54,8 @@ class Hangman:
            if letter in self.word:
                print(f"Good guess! {guess} is in the word.")
                correct_guess_index = [letter.start() for letter in re.finditer(guess, self.word)]
-               print(f"This is correct_guess_index: {correct_guess_index}")
                for index in correct_guess_index:
-                    self.word_guessed[index] = guess
-               #self.word_guessed[self.word.index(guess)] = guess
+                    self.word_guessed[index] = guess               
                print(f" Here is what you have achieved so far: {self.word_guessed}")    
                self.num_letters -= 1
                print(f" You still have {self.num_letters} letters in the word you need to find out")
