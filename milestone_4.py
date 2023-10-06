@@ -8,10 +8,29 @@ Created on Wed Oct  4 16:13:54 2023
 import random
 word_list1 = ["play", "truth", "glow", "computer"]
 
-#define the class Hangman
+
 class Hangman:
-    #intialize the attributes
+    """This is a word guessing game.
+    
+    It asks users to guess one alphabet at a time.
+    The answer (a word) is randomly chosen from any predefined word list.
+    The default is for users to have 5 lives to start with. 
+    Each wrong guess takes away a live.
+    The game ends when there is no more lives left."""
+    
     def __init__(self, word_list, num_lives = 5):
+        """There are two parameters. 
+        The first one is the word list (word_list). 
+        Administrators of the game can create a word list of any length, to be stored as a list.
+        The second parameter is number of lives left (num_lives).
+        The default is set as 5. Adminstrators/users of the game can change it.        
+        
+        A word will be randomly selected as the answer of the game.
+        In the output, the game will display the alphabet(s) guessed (list_of_guesses), 
+        successful guesses achieved (word_guessed), and
+        number of lives remain (num_lives).      
+        """
+        
         self.word_list = word_list
         self.word = random.choice(word_list)
         self.word_guessed = ['_'] *len(self.word)
@@ -19,8 +38,18 @@ class Hangman:
         self.num_lives = num_lives
         self.list_of_guesses = []
     
-    # define the check_guess method to convert the guess into a lowercase, and to see if the letter is in the word (answer)  
+    
     def check_guess(self, guess):
+       """This check_guess method to convert the guess into a lowercase, 
+           and to see if the letter is in the word. 
+           If it is, the user will see where the letter is placed in the word.
+           They will also see how many unique letter is left to be guessed in the word.
+           
+           If they guessed wrong, they have lose one live. 
+           They will see the number of lives left in the game.
+              
+       """
+       
        self.guess = self.guess.lower()
        for letter in self.guess:
            if letter in self.word:
@@ -40,6 +69,19 @@ class Hangman:
     # and if the letter has already been guessed
     # if the checks are cleared, the check_guess method is called    
     def ask_for_input(self):
+        """This ask_for_input method asks users to enter a single alphabet.
+        It first checks if the input is a single alphabet.
+        If not, it'll ask for another input.
+        If it is a single alphabet, it'll check if the input has already been guessed.
+        
+        If both checks were cleared, the game will call he check_guess method, 
+        to see if the letter is in the word. 
+        
+        In the output, users will see the list of letters they have already guessed.
+        
+        The game ends when there is no more live left.       
+        """
+        
         while self.num_lives != 0:
             self.guess = input("Please enter a letter that you think is part of the word: \n" )
             if (self.guess.isalpha() == False and len(self.guess) != 1):
@@ -51,8 +93,6 @@ class Hangman:
                 self.list_of_guesses.append(self.guess)
                 print(f"These are the letters you have already guessed: \n{self.list_of_guesses}")
         
-
-
 player1 = Hangman(word_list1)    
 player1.ask_for_input()
 
