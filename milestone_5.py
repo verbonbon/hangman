@@ -39,9 +39,9 @@ class Hangman:
     
     
     def check_guess(self, guess):
-       """This check_guess method to convert the guess into a lowercase, 
-           and to see if the letter is in the word. 
-           If it is, the user will see where the letter is placed in the word.
+       """This check_guess method converts the guess into lowercase, 
+           and checks if the letter is in the word. 
+           If it is, the game will display the letter within the word (to show the index of the letter within the word).
            They will also see how many unique letter is left to be guessed in the word.
            
            If they guessed wrong, they have lose one live. 
@@ -102,6 +102,7 @@ def play_game(word_list):
              game.ask_for_input()       
         else:
             print("Congratulations. You won the game!")
+            break
 
 
  
@@ -111,17 +112,17 @@ play_game(word_list1)
 
 ### tried an alternative way, still couldn't stop the game from running after num_lives == 0:
 
-def play_game(word_list):
-    num_lives = 5
-    game = Hangman(word_list, num_lives)
-    while True:
-        if (num_lives == 0):
-            print("You lost!")
-            break   
-        if num_lives != 0:
-            if game.num_letters > 0:
-               game.ask_for_input()       
-            else:
-               print("Congratulations. You won the game!")
+#def play_game(word_list):
+#    num_lives = 5
+#    game = Hangman(word_list, num_lives)
+#    while True:
+#        if (num_lives == 0):
+#            print("You lost!")
+#            break   
+#        if num_lives != 0:
+#            if game.num_letters > 0:
+#               game.ask_for_input()       
+#            else:
+#               print("Congratulations. You won the game!")
 
         
