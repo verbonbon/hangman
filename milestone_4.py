@@ -62,12 +62,8 @@ class Hangman:
                self.num_lives -= 1
                print(f"Sorry, {self.guess} is not in the word")
                print(f"You have {self.num_lives} lives left.")
-
-   
-    # define the ask_for_input method,to ask user for a guess (input)
-    # this methods checks if the guess is a single alphabetical character
-    # and if the letter has already been guessed
-    # if the checks are cleared, the check_guess method is called    
+  
+    
     def ask_for_input(self):
         """This ask_for_input method asks users to enter a single alphabet.
         It first checks if the input is a single alphabet.
