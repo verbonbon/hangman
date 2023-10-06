@@ -6,7 +6,7 @@ Created on Wed Oct  4 16:13:54 2023
 """
 
 import random
-word_list1 = ["play", "truth", "glow", "book"]
+word_list1 = ["play", "truth", "glow", "computer"]
 
 #define the class Hangman
 class Hangman:
@@ -19,19 +19,16 @@ class Hangman:
         self.num_lives = num_lives
         self.list_of_guesses = []
     
-    # define the check_guess method to convert the guess into a lowercase, and to see if the letter is in the word (answer)
-    
-    
+    # define the check_guess method to convert the guess into a lowercase, and to see if the letter is in the word (answer)  
     def check_guess(self, guess):
-       print(self.word) 
        self.guess = self.guess.lower()
        for letter in self.guess:
            if letter in self.word:
                print(f"Good guess! {guess} is in the word.")
                self.word_guessed[self.word.index(self.guess)] = self.guess
-               print(f" this is word_guessed: {self.word_guessed}")
+               print(f" Here is what you have achieved so far: {self.word_guessed}")
                self.num_letters -= 1
-               print(f" this is num_letters (unique letters not been guessed): {self.num_letters}")
+               print(f" You still have {self.num_letters} letters in the word you need to find out")
            else:
                self.num_lives -= 1
                print(f"Sorry, {self.guess} is not in the word")
@@ -41,10 +38,9 @@ class Hangman:
     # define the ask_for_input method,to ask user for a guess (input)
     # this methods checks if the guess is a single alphabetical character
     # and if the letter has already been guessed
-    # if the checks are cleared, the check_guess method is called 
-    
+    # if the checks are cleared, the check_guess method is called    
     def ask_for_input(self):
-        while True:
+        while self.num_lives != 0:
             self.guess = input("Please enter a letter that you think is part of the word: \n" )
             if (self.guess.isalpha() == False and len(self.guess) != 1):
                 print("Invalid letter. Please, enter a single alphabetical character")
@@ -53,7 +49,9 @@ class Hangman:
             else:
                 self.check_guess(self.guess)
                 self.list_of_guesses.append(self.guess)
-                print(self.list_of_guesses)
+                print(f"These are the letters you have already guessed: \n{self.list_of_guesses}")
+        
+
 
 player1 = Hangman(word_list1)    
 player1.ask_for_input()
