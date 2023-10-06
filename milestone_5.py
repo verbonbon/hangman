@@ -4,7 +4,6 @@ Created on Wed Oct  4 16:13:54 2023
 
 @author: WingYee.Cheung
 """
-
 import random
 word_list1 = ["play", "truth", "glow", "computer"]
 
@@ -88,7 +87,41 @@ class Hangman:
                 self.check_guess(self.guess)
                 self.list_of_guesses.append(self.guess)
                 print(f"These are the letters you have already guessed: \n{self.list_of_guesses}")
-        
-player1 = Hangman(word_list1)    
-player1.ask_for_input()
+                print(f" This is the number of unique letters left (num_letters) for guessing: {self.num_letters}")
 
+
+### an attempt to follow the practical instructions:
+def play_game(word_list):
+    num_lives = 5
+    game = Hangman(word_list, num_lives)
+    while True:
+        if (num_lives == 0):
+            print("You lost!")
+            break
+        elif game.num_letters > 0:
+             game.ask_for_input()       
+        else:
+            print("Congratulations. You won the game!")
+
+
+ 
+
+play_game(word_list1) 
+
+
+### tried an alternative way, still couldn't stop the game from running after num_lives == 0:
+
+def play_game(word_list):
+    num_lives = 5
+    game = Hangman(word_list, num_lives)
+    while True:
+        if (num_lives == 0):
+            print("You lost!")
+            break   
+        if num_lives != 0:
+            if game.num_letters > 0:
+               game.ask_for_input()       
+            else:
+               print("Congratulations. You won the game!")
+
+        
