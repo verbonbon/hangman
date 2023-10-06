@@ -5,7 +5,8 @@ Created on Wed Oct  4 16:13:54 2023
 @author: WingYee.Cheung
 """
 import random
-word_list1 = ["play", "truth", "glow", "computer"]
+import re
+word_list1 = ["plaay", "truth", "gloow", "computter"]
 
 
 class Hangman:
@@ -48,13 +49,16 @@ class Hangman:
            They will see the number of lives left in the game.
               
        """
-       
-       self.guess = self.guess.lower()
-       for letter in self.guess:
+       guess = guess.lower()
+       for letter in guess:
            if letter in self.word:
                print(f"Good guess! {guess} is in the word.")
-               self.word_guessed[self.word.index(self.guess)] = self.guess
-               print(f" Here is what you have achieved so far: {self.word_guessed}")
+               correct_guess_index = [letter.start() for letter in re.finditer(guess, self.word)]
+               print(f"This is correct_guess_index: {correct_guess_index}")
+               for index in correct_guess_index:
+                    self.word_guessed[index] = guess
+               #self.word_guessed[self.word.index(guess)] = guess
+               print(f" Here is what you have achieved so far: {self.word_guessed}")    
                self.num_letters -= 1
                print(f" You still have {self.num_letters} letters in the word you need to find out")
            else:
@@ -89,8 +93,14 @@ class Hangman:
             print(f" This is the number of unique letters left (num_letters) for guessing: {self.num_letters}")
 
 
-### an attempt to follow the practical instructions:
+
 def play_game(word_list):
+    """This function sets out the logic of the game
+        The game stops running when there is no lives left. 
+        It will ask for input when the word guessing is not complete.
+        It will print a congratulation note if users won the game.
+    """
+    
     num_lives = 5
     game = Hangman(word_list, num_lives)
     while True:
@@ -103,25 +113,8 @@ def play_game(word_list):
             print("Congratulations. You won the game!")
             break
 
-
- 
-
 play_game(word_list1) 
 
 
-### tried an alternative way, still couldn't stop the game from running after num_lives == 0:
-
-#def play_game(word_list):
-#    num_lives = 5
-#    game = Hangman(word_list, num_lives)
-#    while True:
-#        if (num_lives == 0):
-#            print("You lost!")
-#            break   
-#        if num_lives != 0:
-#            if game.num_letters > 0:
-#               game.ask_for_input()       
-#            else:
-#               print("Congratulations. You won the game!")
 
         
