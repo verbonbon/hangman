@@ -10,16 +10,20 @@
 
 
 ##   Background of the project <a name="background"></a>
-This is a one player game, written in Python. The game cane take in any word list, and it will randomly picks a word for player to guess. <\n> 
+This is a one player game, written in Python. The game takes in any word list, and it will randomly picks a word for player to guess. <br/> 
 Player can guess a single letter. The default is to start with 5 lives. Each wrong guess will take away 1 life. 
-
-This project demonstrates the use of class definition and control flow.  
+<br/>
+<br/>This project demonstrates the use of class definition and control flow.  
 
 ##    How to install? <a name="install"></a>
+Download and run the milestone_5.py in your terminal
 
 ##    Usage instructions <a name="usage"></a>
-Number of Dashes represent the length of the word
-At each correct guess the letter is placed at its original position in the word.
+The game will prompt users to enter a single letter. <br/>
+Keeps trying to guess the word!<br/>
+<br/>
+With each correct guess, users will see the display of where the letter fits in the word <br/> 
+For example, for the word "fruit", after guessing "f", it'll show: ['f','_','_','_','_',]
 User loses if the HangMan is completed.
 ##    File structure of the project <a name="file_structure"></a>
 
